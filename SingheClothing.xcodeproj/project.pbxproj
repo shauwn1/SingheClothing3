@@ -14,6 +14,9 @@
 		428C6BEE2BB4106B00E655AB /* ProductVariantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BED2BB4106B00E655AB /* ProductVariantModel.swift */; };
 		428C6BF02BB4122800E655AB /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BEF2BB4122800E655AB /* ProductDetailViewModel.swift */; };
 		428C6BF22BB464D900E655AB /* ClothingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BF12BB464D900E655AB /* ClothingModel.swift */; };
+		42ACD1662BB5FAC000CBF5E0 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACD1652BB5FAC000CBF5E0 /* CategoryView.swift */; };
+		42ACD1682BB6187F00CBF5E0 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACD1672BB6187F00CBF5E0 /* SignUpView.swift */; };
+		42ACD16A2BB637DD00CBF5E0 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ACD1692BB637DD00CBF5E0 /* RegisterModel.swift */; };
 		435E331D2BB0693900A73F41 /* SingheClothingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E331C2BB0693900A73F41 /* SingheClothingApp.swift */; };
 		435E331F2BB0693900A73F41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435E331E2BB0693900A73F41 /* ContentView.swift */; };
 		435E33212BB0693A00A73F41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435E33202BB0693A00A73F41 /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		428C6BED2BB4106B00E655AB /* ProductVariantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVariantModel.swift; sourceTree = "<group>"; };
 		428C6BEF2BB4122800E655AB /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		428C6BF12BB464D900E655AB /* ClothingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingModel.swift; sourceTree = "<group>"; };
+		42ACD1652BB5FAC000CBF5E0 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		42ACD1672BB6187F00CBF5E0 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		42ACD1692BB637DD00CBF5E0 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		435E33192BB0693900A73F41 /* SingheClothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingheClothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		435E331C2BB0693900A73F41 /* SingheClothingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingheClothingApp.swift; sourceTree = "<group>"; };
 		435E331E2BB0693900A73F41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +170,8 @@
 				435E33572BB0B2D300A73F41 /* CartView.swift */,
 				428C6BDD2BB103A700E655AB /* LoginView.swift */,
 				428C6BEB2BB21F6D00E655AB /* ProductDetailView.swift */,
+				42ACD1652BB5FAC000CBF5E0 /* CategoryView.swift */,
+				42ACD1672BB6187F00CBF5E0 /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 				428C6BE12BB1043800E655AB /* UserModel.swift */,
 				428C6BED2BB4106B00E655AB /* ProductVariantModel.swift */,
 				428C6BF12BB464D900E655AB /* ClothingModel.swift */,
+				42ACD1692BB637DD00CBF5E0 /* RegisterModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,11 +335,14 @@
 				435E334A2BB069A300A73F41 /* HomeView.swift in Sources */,
 				435E33502BB080C300A73F41 /* HomeViewModel.swift in Sources */,
 				435E33522BB08BA600A73F41 /* CartModel.swift in Sources */,
+				42ACD1662BB5FAC000CBF5E0 /* CategoryView.swift in Sources */,
 				435E331F2BB0693900A73F41 /* ContentView.swift in Sources */,
+				42ACD16A2BB637DD00CBF5E0 /* RegisterModel.swift in Sources */,
 				428C6BDE2BB103A700E655AB /* LoginView.swift in Sources */,
 				428C6BF22BB464D900E655AB /* ClothingModel.swift in Sources */,
 				428C6BF02BB4122800E655AB /* ProductDetailViewModel.swift in Sources */,
 				435E331D2BB0693900A73F41 /* SingheClothingApp.swift in Sources */,
+				42ACD1682BB6187F00CBF5E0 /* SignUpView.swift in Sources */,
 				435E334E2BB0809A00A73F41 /* APIServiceModel.swift in Sources */,
 				428C6BEC2BB21F6D00E655AB /* ProductDetailView.swift in Sources */,
 				428C6BEE2BB4106B00E655AB /* ProductVariantModel.swift in Sources */,

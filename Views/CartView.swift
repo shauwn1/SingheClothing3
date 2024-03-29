@@ -53,7 +53,11 @@ struct CartView: View {
         }
         .navigationTitle("Cart")
         .listStyle(PlainListStyle())
+        
+        
+        
     }
+    
     
     func removeItems(at offsets: IndexSet) {
         for index in offsets {

@@ -11,7 +11,11 @@ struct HomeView: View {
                         if let subcategories = viewModel.subCategories[category], !subcategories.isEmpty {
                             ForEach(subcategories, id: \.self) { subCategory in
                                 Button(action: {
-                                    viewModel.loadProductsForSubCategory(subCategory)
+                                    print(category)
+                                    print(subCategory)
+                                    
+                                    viewModel.loadProductsForSubCategory(subCategory, forCategory: category)
+                                    
                                 }) {
                                     Text(subCategory)
                                 }
@@ -32,12 +36,35 @@ struct HomeView: View {
                         }
                     }
                 }
+                
+                
             }
-            .listStyle(InsetGroupedListStyle())
-            .navigationTitle("Clothing Store")
-        }
-    }
-}
+            .toolbar {
+                            // Cart Button Toolbar Item
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                CartButtonView(cart: viewModel.cart)
+                            }
+                            // Sort Button Toolbar Item
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Menu {
+                                    Button("Price Low to High") {
+                                        viewModel.sortState = .priceLowToHigh
+                                        viewModel.sortProducts()
+                                    }
+                                    Button("Price High to Low") {
+                                        viewModel.sortState = .priceHighToLow
+                                        viewModel.sortProducts()
+                                    }
+                                } label: {
+                                    Label("Sort", systemImage: "arrow.up.arrow.down")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+
 
 struct ProductRow: View {
     let product: ClothingItem

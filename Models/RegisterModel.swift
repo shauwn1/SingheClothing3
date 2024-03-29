@@ -6,3 +6,9 @@
 //
 
 import Foundation
+struct RegistrationData: Codable {
+    var fullname: String
+    var mobilenumber: String
+    var email: String
+    var password: String
+}
