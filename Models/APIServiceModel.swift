@@ -199,36 +199,74 @@ class ApiService {
     }
     
     
+    
+    
+
+        func fetchUserProfile(userId: Int, completion: @escaping (User?) -> Void) {
+            let url = URL(string: "\(baseURL)/users/\(userId)")!
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                let user = try? JSONDecoder().decode(User.self, from: data)
+                DispatchQueue.main.async {
+                    completion(user)
+                }
+            }.resume()
+        }
+
+        func updateUserProfile(userId: Int, updatedUser: User, completion: @escaping (Bool) -> Void) {
+            let url = URL(string: "\(baseURL)/users/\(userId)")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "PUT"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = try? JSONEncoder().encode(updatedUser)
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    DispatchQueue.main.async {
+                        completion(false)
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    completion(true)
+                }
+            }.resume()
+        
+    }
+    
+    
     func placeOrder(userID: Int, items: [CartItem], completion: @escaping (Bool) -> Void) {
-        let urlString = "\(baseURL)/orders" // Use the appropriate endpoint for placing orders
-        guard let url = URL(string: urlString) else {
-            completion(false)
-            return
-        }
-        
-        var orderDetails: [String: Any] = [
-            "userId": userID,
-            "items": items.map { ["productId": $0.product.id, "size": $0.size, "color": $0.color, "quantity": $0.quantity] }
-        ]
-        // Convert orderDetails dictionary to JSON data
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: orderDetails, options: []) else {
-            completion(false)
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            let urlString = "\(baseURL)/orders"
+            guard let url = URL(string: urlString) else {
                 completion(false)
                 return
             }
-            completion(true)
-        }.resume()
-    }
+
+        let orderItems = items.map { OrderItem(productId: $0.product.id, size: $0.size, color: $0.color, quantity: $0.quantity) }
+            let orderDetails = OrderDetails(userId: userID, items: orderItems)
+        print("Placing order for user ID: \(userID) with items: \(orderItems)")
+            guard let jsonData = try? JSONEncoder().encode(orderDetails) else {
+                completion(false)
+                return
+            }
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = jsonData
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    completion(false)
+                    return
+                }
+                completion(true)
+            }.resume()
+        }
     
 }
 

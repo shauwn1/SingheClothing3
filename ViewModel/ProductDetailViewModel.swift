@@ -42,7 +42,7 @@ class ProductDetailViewModel: ObservableObject {
         print("Adding to cart with size: \(size) and color: \(color)")
         // Check if the variant with the selected size and color exists
         if let variant = productVariants.first(where: { $0.size == size && $0.color == color }) {
-            let cartItem = CartItem(product: product, size: size, color: color, quantity: 1)
+            let cartItem = CartItem(product: product, size: size, quantity: 1, color: color)
             cart.addToCart(item: cartItem)
         }
     }

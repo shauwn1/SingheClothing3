@@ -1,29 +1,38 @@
 // CartModel.swift
 import Foundation
-
-struct CartItem: Identifiable {
-    let id: UUID
+struct CartItem: Identifiable, Encodable {
+    var id: UUID = UUID() // Default value provided
     var product: ClothingItem
     var size: String
     var quantity: Int
     var color: String
     
+    // Other properties and methods...
+    init(product: ClothingItem, size: String, quantity: Int, color: String) {
+        self.id = UUID()
+        self.product = product
+        self.size = size
+        self.quantity = quantity
+        self.color = color
+    }
     
-    // Initialize with a UUID by default
-        init(product: ClothingItem, size: String, color: String, quantity: Int) {
-            self.id = UUID()
-            self.product = product
-            self.size = size
-            self.color = color
-            self.quantity = quantity
-        }
-    
-    
+    // Define coding keys if your JSON keys don't match the variable names exactly
+    enum CodingKeys: String, CodingKey {
+        case id
+        case product // Make sure the JSON key for product details matches this key.
+        case size
+        case quantity
+        case color
+    }
     
 }
-
 class Cart: ObservableObject {
     @Published var items: [CartItem] = []
+    
+    
+    var encodableItems: [EncodableCartItem] {
+            items.map { EncodableCartItem(cartItem: $0) }
+        }
     
     // Adds an item to the cart.
     func addToCart(item: CartItem) {
@@ -57,6 +66,11 @@ class Cart: ObservableObject {
             }
         }
     }
+    
+    
+    func clearCart() {
+            items.removeAll()
+        }
     
     // Computed property to get the total number of items in the cart.
     var totalItems: Int {

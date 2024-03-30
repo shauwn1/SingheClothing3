@@ -9,9 +9,10 @@ import SwiftUI
 
 struct CartButtonView: View {
     @ObservedObject var cart: Cart
+    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
 
     var body: some View {
-        NavigationLink(destination: CartView(cart: cart)) {
+        NavigationLink(destination: CartView(cart: cart, authenticationViewModel: _authenticationViewModel)) {
             ZStack(alignment: .topTrailing) {
                 Image(systemName: "cart") // Replace with your cart icon
                     .resizable()

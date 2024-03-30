@@ -1,3 +1,4 @@
+//authenticationviewmodel
 import Foundation
 
 class AuthenticationViewModel: ObservableObject {
@@ -50,6 +51,12 @@ class AuthenticationViewModel: ObservableObject {
                     self.isAuthenticated = true
                     self.errorMessage = nil
                     self.onLoginSuccess?()
+                    print("Logged in user: \(self.user)")
+                    } catch {
+                        self.errorMessage = "Failed to decode user details: \(error.localizedDescription)"
+                        print("Decoding error: \(error.localizedDescription)") // Debug print
+                    
+                    
                 }
                 catch let DecodingError.dataCorrupted(context) {
                    print(context)

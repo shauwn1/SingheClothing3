@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct ClothingItem: Identifiable, Decodable {
+struct ClothingItem: Identifiable, Codable {
     var id: Int
     var title: String
     var price: Double

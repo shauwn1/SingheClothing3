@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SignupView: View {
-    @StateObject private var authenticationviewmodel = AuthenticationViewModel()
+    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var fullName = ""
     @State private var email = ""
     @State private var password = ""
@@ -33,14 +33,14 @@ struct SignupView: View {
                     .cornerRadius(5)
 
                 Button("Register") {
-                    authenticationviewmodel.register(fullname: fullName, mobilenumber: mobileNumber, email: email, password: password)
+                    authenticationViewModel.register(fullname: fullName, mobilenumber: mobileNumber, email: email, password: password)
                 }
                 .padding()
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(5)
 
-                if let errorMessage = authenticationviewmodel.errorMessage {
+                if let errorMessage = authenticationViewModel.errorMessage {
                     Text(errorMessage)
                         .foregroundColor(.red)
                 }
@@ -57,7 +57,7 @@ struct SignupView: View {
             .padding()
             .navigationTitle("Sign Up")
             .onAppear {
-                authenticationviewmodel.onRegistrationSuccess = {
+                authenticationViewModel.onRegistrationSuccess = {
                     self.showRegistrationSuccess = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         self.navigateToLogin = true

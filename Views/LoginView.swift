@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var authenticationViewModel = AuthenticationViewModel()
+    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var email = ""
     @State private var password = ""
     @State private var shouldNavigateToHome = false

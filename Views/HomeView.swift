@@ -2,9 +2,13 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
+    @State private var showingProfile = false
+    @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
+    @State private var activeUser: User?
 
     var body: some View {
         NavigationView {
+            
             List {
                 ForEach(viewModel.categories, id: \.self) { category in
                     Section(header: Text(category)) {
@@ -13,9 +17,7 @@ struct HomeView: View {
                                 Button(action: {
                                     print(category)
                                     print(subCategory)
-                                    
                                     viewModel.loadProductsForSubCategory(subCategory, forCategory: category)
-                                    
                                 }) {
                                     Text(subCategory)
                                 }
@@ -28,7 +30,16 @@ struct HomeView: View {
                         }
                     }
                 }
-                
+                Section(header: Text("Debug User Info")) {
+                    if let user = authenticationViewModel.user {
+                        Text("User ID: \(user.id)")
+                        Text("Full Name: \(user.fullname)")
+                        Text("Email: \(user.email)")
+                        // Add more details if necessary
+                    } else {
+                        Text("No user data available")
+                    }
+                }
                 Section(header: Text("Products")) {
                     ForEach(viewModel.clothingItems) { product in
                         NavigationLink(destination: ProductDetailView(product: product, cart: viewModel.cart)) {
@@ -37,9 +48,32 @@ struct HomeView: View {
                     }
                 }
                 
-                
             }
+            .navigationBarItems(leading: profileButton)
+                        .sheet(isPresented: $showingProfile) {
+                            if let user = authenticationViewModel.user {
+                                UserProfileView(viewModel: UserProfileViewModel(apiService: ApiService(), userId: user.id))
+                                    
+                            } else {
+                                    // Temporary view to test sheet presentation
+                                    Text("No user data available")
+                                }
+                            
+                        }
+            
+            
             .toolbar {
+                
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        print("User details: \(String(describing: authenticationViewModel.user))")
+                        self.activeUser = authenticationViewModel.user
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                    }
+                }
+                                
                             // Cart Button Toolbar Item
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 CartButtonView(cart: viewModel.cart)
@@ -60,11 +94,27 @@ struct HomeView: View {
                                 }
                             }
                         }
-                    }
+            .sheet(item: $activeUser, onDismiss: {
+                // Handle dismissal if needed
+            }) { user in
+                UserProfileView(viewModel: UserProfileViewModel(apiService: ApiService(), userId: user.id))
+            }
+            
                 }
             }
+    private var profileButton: some View {
+            Button(action: {
+                showingProfile.toggle()
+            }) {
+                Image(systemName: "person.crop.circle")
+                    .accessibilityLabel("User Profile")
+            }
+        }
+                
+            }
     
-
+    
+    
 
 struct ProductRow: View {
     let product: ClothingItem
