@@ -5,9 +5,11 @@
 import Foundation
 
 class HomeViewModel: ObservableObject {
+    
     @Published var allProducts: [ClothingItem] = []
     @Published var filteredProducts: [String: [ClothingItem]] = [:]
     @Published var selectedSubCategory: String?
+    
     @Published var categories: [String] = []
     @Published var subCategories: [String: [String]] = [:]
     @Published var clothingItems: [ClothingItem] = []
@@ -17,6 +19,7 @@ class HomeViewModel: ObservableObject {
             loadProductsForCategory()
         }
     }
+    
     // Initialize or reset the products view to show all products
     init(cart: Cart) {
         self.cart = cart
@@ -79,6 +82,16 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
+    
+    
+    @Published var orders: [OrderItem] = []
+
+//    func fetchOrders() {
+//        guard let userId = authenticationViewModel.user?.id else { return }
+//        apiService.fetchOrders(userId: userId) { [weak self] orders in
+//            self?.orders = orders ?? []
+//        }
+//    }
     
     
     enum SortState {

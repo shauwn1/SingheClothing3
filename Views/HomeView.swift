@@ -5,6 +5,7 @@ struct HomeView: View {
     @State private var showingProfile = false
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
     @State private var activeUser: User?
+    @State private var showOrders = false
 
     var body: some View {
         NavigationView {
@@ -60,6 +61,22 @@ struct HomeView: View {
                                 }
                             
                         }
+                        .navigationBarItems(trailing: Button(action: {
+                                        self.showOrders.toggle()
+                                    }) {
+                                        Image(systemName: "list.bullet")
+                                            .resizable()
+                                            .frame(width: 24, height: 24)
+                                            .accessibilityLabel("View Orders")
+                                    })
+//                                    .background(
+//                                        NavigationLink(destination: OrdersView(viewModel: OrdersViewModel(userId: authenticationViewModel.user?.id ?? 0)), isActive: $showOrders) {
+//                                            EmptyView()
+//                                        }
+//                                        .hidden()
+//                                    )
+                                
+                            
             
             
             .toolbar {
@@ -110,6 +127,7 @@ struct HomeView: View {
                     .accessibilityLabel("User Profile")
             }
         }
+    
                 
             }
     

@@ -11,6 +11,9 @@
 		426CB8432BB88C75004523FE /* OrderDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB8422BB88C75004523FE /* OrderDetailsModel.swift */; };
 		426CB8452BB88D11004523FE /* EncodableCartItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB8442BB88D11004523FE /* EncodableCartItemsModel.swift */; };
 		426CB8472BB88F57004523FE /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB8462BB88F57004523FE /* OrderItem.swift */; };
+		426CB8492BB8D081004523FE /* OrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB8482BB8D081004523FE /* OrdersView.swift */; };
+		426CB84B2BB8D4B3004523FE /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB84A2BB8D4B3004523FE /* OrderModel.swift */; };
+		426CB84D2BB8D596004523FE /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426CB84C2BB8D596004523FE /* OrdersViewModel.swift */; };
 		428C6BDE2BB103A700E655AB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BDD2BB103A700E655AB /* LoginView.swift */; };
 		428C6BE02BB1041B00E655AB /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BDF2BB1041B00E655AB /* AuthenticationViewModel.swift */; };
 		428C6BE22BB1043800E655AB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428C6BE12BB1043800E655AB /* UserModel.swift */; };
@@ -61,6 +64,9 @@
 		426CB8422BB88C75004523FE /* OrderDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsModel.swift; sourceTree = "<group>"; };
 		426CB8442BB88D11004523FE /* EncodableCartItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableCartItemsModel.swift; sourceTree = "<group>"; };
 		426CB8462BB88F57004523FE /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		426CB8482BB8D081004523FE /* OrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersView.swift; sourceTree = "<group>"; };
+		426CB84A2BB8D4B3004523FE /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		426CB84C2BB8D596004523FE /* OrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
 		428C6BDD2BB103A700E655AB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		428C6BDF2BB1041B00E655AB /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		428C6BE12BB1043800E655AB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 				42BF8AB52BB7039300A898A1 /* UserProfileView.swift */,
 				42BF8AB92BB764D800A898A1 /* DashboardView.swift */,
 				425E3CD82BB85F12004E1E16 /* MenuView.swift */,
+				426CB8482BB8D081004523FE /* OrdersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +207,7 @@
 				428C6BDF2BB1041B00E655AB /* AuthenticationViewModel.swift */,
 				428C6BEF2BB4122800E655AB /* ProductDetailViewModel.swift */,
 				42BF8AB72BB7048400A898A1 /* UserProfileViewModel.swift */,
+				426CB84C2BB8D596004523FE /* OrdersViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 				426CB8422BB88C75004523FE /* OrderDetailsModel.swift */,
 				426CB8442BB88D11004523FE /* EncodableCartItemsModel.swift */,
 				426CB8462BB88F57004523FE /* OrderItem.swift */,
+				426CB84A2BB8D4B3004523FE /* OrderModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -351,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				428C6BE02BB1041B00E655AB /* AuthenticationViewModel.swift in Sources */,
+				426CB84B2BB8D4B3004523FE /* OrderModel.swift in Sources */,
 				435E33582BB0B2D300A73F41 /* CartView.swift in Sources */,
 				435E33562BB0B28400A73F41 /* CartButtonView.swift in Sources */,
 				435E334A2BB069A300A73F41 /* HomeView.swift in Sources */,
@@ -368,9 +378,11 @@
 				428C6BDE2BB103A700E655AB /* LoginView.swift in Sources */,
 				428C6BF22BB464D900E655AB /* ClothingModel.swift in Sources */,
 				428C6BF02BB4122800E655AB /* ProductDetailViewModel.swift in Sources */,
+				426CB84D2BB8D596004523FE /* OrdersViewModel.swift in Sources */,
 				435E331D2BB0693900A73F41 /* SingheClothingApp.swift in Sources */,
 				42ACD1682BB6187F00CBF5E0 /* SignUpView.swift in Sources */,
 				435E334E2BB0809A00A73F41 /* APIServiceModel.swift in Sources */,
+				426CB8492BB8D081004523FE /* OrdersView.swift in Sources */,
 				428C6BEC2BB21F6D00E655AB /* ProductDetailView.swift in Sources */,
 				42BF8AB82BB7048400A898A1 /* UserProfileViewModel.swift in Sources */,
 				428C6BEE2BB4106B00E655AB /* ProductVariantModel.swift in Sources */,

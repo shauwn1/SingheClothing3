@@ -5,27 +5,19 @@ import SwiftUI
 
 struct UserProfileView: View {
     @ObservedObject var viewModel: UserProfileViewModel
-    let defaultImage = Image("defaultProfileImage") // Replace with your default image
+    @EnvironmentObject var v: AuthenticationViewModel
     
     var body: some View {
         VStack {
-            if let user = viewModel.user {
-                defaultImage
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
-                
+            if let user = v.user {
                 Text("Full Name: \(user.fullname)")
                 Text("Email: \(user.email)")
                 Text("Mobile Number: \(user.mobilenumber)")
-                // ... add more fields as needed
             } else {
-                Text("User details not available")
+                ProgressView("Loading...")
             }
         }
         .onAppear {
-            // Make sure to fetch user profile when the view appears
             viewModel.fetchUserProfile()
         }
         .navigationTitle("Profile")

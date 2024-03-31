@@ -237,6 +237,32 @@ class ApiService {
             }.resume()
         
     }
+    func fetchOrders(forUserId userId: Int, completion: @escaping ([Order]?) -> Void) {
+        let urlString = "\(baseURL)/users/\(userId)/orders"
+        guard let url = URL(string: urlString) else { return completion(nil) }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error fetching orders: \(error)")
+                return completion(nil)
+            }
+            guard let data = data else {
+                print("No data received for orders")
+                return completion(nil)
+            }
+            do {
+                let orders = try JSONDecoder().decode([Order].self, from: data)
+                DispatchQueue.main.async {
+                    completion(orders)
+                }
+            } catch {
+                print("Failed to decode orders: \(error)")
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
+        }.resume()
+    }
     
     
     func placeOrder(userID: Int, items: [CartItem], completion: @escaping (Bool) -> Void) {

@@ -16,10 +16,11 @@ class UserProfileViewModel: ObservableObject {
     init(apiService: ApiService, userId: Int) {
         self.apiService = apiService
         self.userId = userId
-        fetchUserProfile()
+//        fetchUserProfile()
     }
 
     func fetchUserProfile() {
+        print(userId)
         apiService.fetchUserProfile(userId: userId) { [weak self] user in
             DispatchQueue.main.async {
                 self?.user = user
